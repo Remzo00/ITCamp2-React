@@ -1,8 +1,9 @@
 import React from 'react'
+import './button.css'
 
-const Button = ({text, color}) => {
+const Button = ({text, backgroudColor, color}) => { 
     return(
-       <button style={{backgroundColor: color}}>{text}</button>
+       <button style={{backgroundColor: backgroudColor, color: color}}>{text}</button>
     )
 }
 

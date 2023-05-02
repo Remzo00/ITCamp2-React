@@ -27,15 +27,21 @@ const cardData = [
 
 function App() {
   return (
-    <div className="App">
-     {cardData.map((card) => (
-      <Card
-        key={card.id}
-        image={card.image}
-        title={card.title}
-        description={card.description}
-      />
-     ))}
+    // <div className="App">
+    //  {cardData.map((card) => (
+    //   <Card
+    //     key={card.id}
+    //     image={card.image}
+    //     title={card.title}
+    //     description={card.description}
+    //   />
+    //  ))}
+    // </div>
+    <div>
+    <Button text={'Open to'} backgroudColor={'Blue'} color={'White'} />
+    <Button text={'Add profile section'} />
+    <Button text={'Join'} />
+    <Button text={'Connect'} />
     </div>
   );
 }

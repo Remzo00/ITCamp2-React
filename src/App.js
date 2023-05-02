@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import Header from './components/Header/header';
 import Button from './components/button/button';
 import Card from './components/Card';
+import Counter from './counter';
 
 const cardData = [
   {
@@ -27,6 +28,7 @@ const cardData = [
 
 function App() {
   return (
+   <Counter />
     // <div className="App">
     //  {cardData.map((card) => (
     //   <Card
@@ -37,12 +39,7 @@ function App() {
     //   />
     //  ))}
     // </div>
-    <div>
-    <Button text={'Open to'} backgroudColor={'Blue'} color={'White'} />
-    <Button text={'Add profile section'} />
-    <Button text={'Join'} />
-    <Button text={'Connect'} />
-    </div>
+    
   );
 }
 

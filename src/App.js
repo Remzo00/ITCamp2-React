@@ -4,6 +4,7 @@ import Header from './components/Header/header';
 import Button from './components/button/button';
 import Card from './components/Card';
 import Counter from './counter';
+import Text from './components/Text';
 
 const cardData = [
   {
@@ -28,7 +29,11 @@ const cardData = [
 
 function App() {
   return (
-   <Counter />
+    <div>
+ <Counter />
+   <Text />
+    </div>
+  
     // <div className="App">
     //  {cardData.map((card) => (
     //   <Card

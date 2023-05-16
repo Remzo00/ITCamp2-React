@@ -3,8 +3,10 @@ import './App.css';
 import Header from './components/Header/header';
 import Button from './components/button/button';
 import Card from './components/Card';
-import Counter from './counter';
-import Text from './components/Text';
+import Counter from './state/counter';
+import Text from './state/Text';
+import Login from './state/dropdown';
+import Dropdown from './state/dropdown';
 
 const cardData = [
   {
@@ -32,6 +34,7 @@ function App() {
     <div>
  <Counter />
    <Text />
+   <Dropdown />
     </div>
   
     // <div className="App">

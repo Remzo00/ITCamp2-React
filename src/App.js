@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 import './App.css';
-import Header from './components/Header/header';
-import Button from './components/button/button';
-import Card from './components/Card';
-import Counter from './state/counter';
-import Text from './state/Text';
-import Login from './state/dropdown';
-import Dropdown from './state/dropdown';
+import Login from './state/login';
 
 const cardData = [
   {
@@ -32,9 +26,7 @@ const cardData = [
 function App() {
   return (
     <div>
- <Counter />
-   <Text />
-   <Dropdown />
+   <Login />
     </div>
   
     // <div className="App">

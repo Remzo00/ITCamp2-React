@@ -26,20 +26,3 @@ const Login = () => {
 }
 
 export default Login
-
-
-
-
-
-
-{/* <div>
-{isLoggedIn ? (
-    <h1>Dobrodosli</h1>
-) : (
-    <h1>Molimo vas ulogujte se</h1>
-)}
-
-<button onClick={isLoggedIn ? handleLogout : handleLogin}>
-    {isLoggedIn ? "Odjava": "Prijava"}
-</button>
-</div> */}

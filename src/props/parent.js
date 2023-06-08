@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import Child from "./child";
 
 const Parent = () => {
-    const [dataFromChild, setDataFromChild] = useState('')
+    const [username, setUsername] = useState('');
 
-    const handleDataFromChild = (data) => {
-        setDataFromChild(data)
-    }
+  const handleUsernameChange = (newUsername) => {
+    setUsername(newUsername);
+  };
+
 
     return(
         <div>
-            <h1>Data from child: {dataFromChild}</h1>
-            <Child onData={handleDataFromChild} />
+            <h1>Username: {username}</h1>
+            <Child onUsernameChange={handleUsernameChange} />
         </div>
     )
 }

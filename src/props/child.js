@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Child = ({onData}) => {
-    const sendDataToParent = () => {
-        const data = 'Hello from child'
-        onData(data)
-    }
-    return(
-        <div>
-            <button onClick={sendDataToParent}>Send data to parent</button>
-        </div>
-    )
+const Child = ({onUsernameChange}) => {
+    const [inputValue, setInputValue] = useState('');
+
+    const handleChange = (event) => {
+      setInputValue(event.target.value);
+    };
+  
+    const handleButtonClick = () => {
+      onUsernameChange(inputValue);
+    };
+  
+    return (
+      <div>
+        <input type="text" value={inputValue} onChange={handleChange} />
+        <button onClick={handleButtonClick}>Update Username</button>
+      </div>
+    );
 }
 
 export default Child

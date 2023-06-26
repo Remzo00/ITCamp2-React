@@ -1,33 +1,74 @@
 import axios from "axios";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 
-const fetchData = async () => {
-    const response = await axios.get('https://fakestoreapi.com/products')
-    const data = response.data
-    return data
-}
+
 
 const ReactQuery = () => {
-    const { data, isLoading, isError, error } = useQuery('products', fetchData)
+  const [weatherData, setWeatherData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchedCity, setSearchedCity] = useState('');
 
-    if(isLoading){
-        return <div>Loading...</div>
+  const handleSearch = () => {
+    setSearchedCity(searchQuery);
+  };
+
+  useEffect(() => {
+    if (searchedCity === '') {
+      return;
     }
 
-    if(isError){
-        return <div>Error: {error.message}</div>
-    }
-    return(
+    // Fetch weather data for the searched city
+    const fetchWeatherData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(
+          `http://api.weatherapi.com/v1/current.json?key=4ad4b31380394ec29b9183313232006&q=${searchedCity}`
+          );
+
+        setWeatherData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchWeatherData();
+  }, [searchedCity]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+
+  return (
+    <div>
+      <h1>Weather App</h1>
+      <div>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      {weatherData && (
         <div>
-      <h1>Products List</h1>
-      <ul>
-        {data.map((product) => (
-          <li key={product.id}>{product.title}</li>
-        ))}
-      </ul>
+          <h2>Current Weather in {weatherData.location.name}</h2>
+          <p>Temperature: {weatherData.current.temp_c}°C</p>
+          <p>Humidity: {weatherData.current.humidity}%</p>
+          <p>Weather: {weatherData.current.condition.text}</p>
+        </div>
+      )}
     </div>
-    )
-}
+  );
+};
 
 export default ReactQuery

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
+import { SearchButton, Wrapper } from "./index.styled";
 
 
 
@@ -49,7 +50,7 @@ const ReactQuery = () => {
 
 
   return (
-    <div>
+    <Wrapper>
       <h1>Weather App</h1>
       <div>
         <input
@@ -57,7 +58,7 @@ const ReactQuery = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
+        <SearchButton onClick={handleSearch}>Search</SearchButton>
       </div>
       {weatherData && (
         <div>
@@ -67,7 +68,7 @@ const ReactQuery = () => {
           <p>Weather: {weatherData.current.condition.text}</p>
         </div>
       )}
-    </div>
+    </Wrapper>
   );
 };
 
